@@ -1,10 +1,10 @@
 import grinchHero from "@/assets/grinch-streamer-hero.jpg";
 
 const links = [
-  { label: "YouTube", tag: "VOD vault", href: "https://www.youtube.com/@Grinch", code: "YT" },
-  { label: "Kick", tag: "unfiltered live", href: "https://kick.com/grinch", code: "K" },
-  { label: "Twitch", tag: "main broadcast", href: "https://www.twitch.tv/grinch", code: "TV" },
-  { label: "Discord", tag: "the lair", href: "https://discord.gg/grinch", code: "DC" },
+  { label: "YouTube", tag: "VOD vault", href: "https://www.youtube.com/@Grinch", code: "YT", image: grinchHero },
+  { label: "Kick", tag: "unfiltered live", href: "https://kick.com/grinch", code: "K", image: grinchHero },
+  { label: "Twitch", tag: "main broadcast", href: "https://www.twitch.tv/grinch", code: "TV", image: grinchHero },
+  { label: "Discord", tag: "the lair", href: "https://discord.gg/grinch", code: "DC", image: grinchHero },
 ];
 
 const Index = () => {
@@ -81,14 +81,20 @@ const Index = () => {
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {links.map((link, index) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="group relative min-h-56 overflow-hidden border-2 border-border bg-card p-6 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-signal focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
-              <span className="font-mono text-xs uppercase text-muted-foreground">00{index + 1} // {link.tag}</span>
-              <div className="mt-12 flex items-end justify-between gap-4">
+            <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="group relative min-h-72 overflow-hidden border-2 border-border bg-card p-6 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-signal focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
+              <div className="flex items-start justify-between gap-4">
+                <span className="font-mono text-xs uppercase text-muted-foreground">00{index + 1} // {link.tag}</span>
+                <span className="grid size-10 place-items-center border-2 border-primary bg-primary font-mono text-sm font-bold text-primary-foreground transition-transform group-hover:rotate-6 group-hover:scale-110">{link.code}</span>
+              </div>
+              <div className="mx-auto mt-8 size-28 overflow-hidden rounded-full border-4 border-primary bg-muted shadow-signal transition-transform duration-300 group-hover:scale-105">
+                <img src={link.image} alt={`${link.label} profile picture for Grinch`} width={128} height={128} loading="lazy" className="h-full w-full object-cover" />
+              </div>
+              <div className="mt-8 flex items-end justify-between gap-4">
                 <div>
                   <span className="block font-display text-4xl font-extrabold uppercase text-card-foreground transition-colors group-hover:text-primary">{link.label}</span>
                   <span className="mt-2 block font-mono text-xs uppercase text-muted-foreground">open channel</span>
                 </div>
-                <span className="grid size-12 place-items-center border-2 border-primary bg-primary font-mono font-bold text-primary-foreground transition-transform group-hover:rotate-6 group-hover:scale-110">{link.code}</span>
+                <span className="font-mono text-2xl text-primary transition-transform group-hover:translate-x-1">→</span>
               </div>
             </a>
           ))}
