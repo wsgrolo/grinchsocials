@@ -4,7 +4,7 @@ const links = [
   { label: "YouTube", tag: "VOD vault", href: "https://www.youtube.com/@Grinch", code: "YT", image: grinchHero },
   { label: "Kick", tag: "unfiltered live", href: "https://kick.com/grinch", code: "K", image: grinchHero },
   { label: "Twitch", tag: "main broadcast", href: "https://www.twitch.tv/grinch", code: "TV", image: grinchHero },
-  { label: "Discord", tag: "the lair", href: "https://discord.gg/grinch", code: "DC", image: grinchHero },
+  { label: "Discord", tag: "the lair", href: "https://discord.gg/zVJu4jtuYP", code: "DC", image: grinchHero },
 ];
 
 const Index = () => {
