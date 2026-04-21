@@ -8,35 +8,48 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 120 12% 4%;
+    --foreground: 92 55% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 120 10% 8%;
+    --card-foreground: 92 55% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 120 10% 8%;
+    --popover-foreground: 92 55% 92%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 106 97% 50%;
+    --primary-foreground: 120 12% 4%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 65 94% 49%;
+    --secondary-foreground: 120 12% 4%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 120 8% 14%;
+    --muted-foreground: 92 16% 62%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 343 100% 50%;
+    --accent-foreground: 92 55% 92%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 106 55% 23%;
+    --input: 120 8% 14%;
+    --ring: 106 97% 50%;
 
     --radius: 0.5rem;
+
+    --terminal: 120 12% 4%;
+    --terminal-soft: 120 10% 8%;
+    --terminal-panel: 120 9% 11%;
+    --signal: 106 97% 50%;
+    --signal-glow: 106 97% 62%;
+    --hazard: 65 94% 49%;
+    --static: 92 55% 92%;
+    --danger-pop: 343 100% 50%;
+    --gradient-broadcast: linear-gradient(135deg, hsl(var(--terminal)) 0%, hsl(var(--terminal-panel)) 48%, hsl(var(--signal) / 0.22) 100%);
+    --gradient-signal: linear-gradient(90deg, hsl(var(--signal)), hsl(var(--hazard)));
+    --shadow-signal: 0 0 40px hsl(var(--signal) / 0.28);
+    --shadow-hard: 8px 8px 0 hsl(var(--signal)), -8px -8px 0 hsl(var(--danger-pop));
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +114,29 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Space Grotesk", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Syne", "Space Grotesk", system-ui, sans-serif;
+  }
+
+  .font-mono-ui {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  .scanlines {
+    background: repeating-linear-gradient(0deg, hsl(var(--terminal) / 0.16) 0px, hsl(var(--terminal) / 0.16) 1px, transparent 1px, transparent 3px);
+  }
+
+  .noise-field {
+    background-image: radial-gradient(hsl(var(--signal) / 0.12) 1px, transparent 1px);
+    background-size: 18px 18px;
   }
 }
