@@ -101,25 +101,6 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="schedule" className="relative z-10 mx-auto max-w-7xl px-5 pb-20 md:px-8">
-        <div className="overflow-hidden border-2 border-border bg-card">
-          <div className="flex items-center justify-between border-b border-border bg-muted px-5 py-4 font-mono text-xs font-bold uppercase text-muted-foreground">
-            <span>weekly broadcast board</span>
-            <span className="text-primary">status: armed</span>
-          </div>
-          {[
-            ["Mon", "Ranked mayhem", "8 PM"],
-            ["Wed", "Community raids", "7 PM"],
-            ["Fri", "Late-night chaos", "9 PM"],
-          ].map(([day, title, time]) => (
-            <div key={day} className="grid gap-3 border-b border-border px-5 py-5 last:border-b-0 md:grid-cols-[120px_1fr_120px] md:items-center">
-              <span className="font-mono text-sm font-bold uppercase text-primary">{day}</span>
-              <span className="font-display text-2xl font-extrabold uppercase">{title}</span>
-              <span className="font-mono text-sm uppercase text-muted-foreground md:text-right">{time}</span>
-            </div>
-          ))}
-        </div>
-      </section>
     </main>
   );
 };
