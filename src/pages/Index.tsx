@@ -1,16 +1,121 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import grinchHero from "@/assets/grinch-streamer-hero.jpg";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const links = [
+  { label: "YouTube", tag: "VOD vault", href: "https://www.youtube.com/@Grinch", code: "YT" },
+  { label: "Kick", tag: "unfiltered live", href: "https://kick.com/grinch", code: "K" },
+  { label: "Twitch", tag: "main broadcast", href: "https://www.twitch.tv/grinch", code: "TV" },
+  { label: "Discord", tag: "the lair", href: "https://discord.gg/grinch", code: "DC" },
+];
+
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      <div className="pointer-events-none fixed inset-0 z-40 scanlines opacity-40" />
+      <div className="pointer-events-none fixed inset-0 z-0 noise-field opacity-30" />
+
+      <header className="relative z-30 border-b border-border/70 bg-background/85 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
+          <a href="#top" className="font-display text-xl font-extrabold uppercase tracking-normal text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
+            Grinch
+          </a>
+          <div className="hidden items-center gap-6 font-mono text-xs uppercase text-muted-foreground md:flex">
+            <a className="transition-colors hover:text-primary" href="#links">Links</a>
+            <a className="transition-colors hover:text-primary" href="#schedule">Schedule</a>
+            <span className="animate-flicker text-secondary">● live soon</span>
+          </div>
+        </nav>
+      </header>
+
+      <section id="top" className="relative z-10 mx-auto grid min-h-[86vh] max-w-7xl items-center gap-10 px-5 py-12 md:grid-cols-[1.05fr_0.95fr] md:px-8 lg:py-16">
+        <div className="space-y-8">
+          <div className="inline-flex border-2 border-primary bg-primary px-3 py-1 font-mono text-xs font-bold uppercase text-primary-foreground shadow-signal">
+            Unauthorized broadcast detected
+          </div>
+          <div className="space-y-5">
+            <h1 className="font-display text-6xl font-extrabold uppercase leading-[0.82] tracking-normal text-foreground sm:text-7xl lg:text-9xl">
+              Grinch
+              <span className="block bg-signal bg-clip-text text-transparent">goes live</span>
+            </h1>
+            <p className="max-w-xl text-lg leading-8 text-muted-foreground md:text-xl">
+              Mischief-heavy streams, chaotic wins, late-night lobbies, and a community built for viewers who never log off quietly.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a href="https://www.twitch.tv/grinch" target="_blank" rel="noreferrer" className="group inline-flex min-h-12 items-center justify-center border-2 border-primary bg-primary px-6 font-mono text-sm font-bold uppercase text-primary-foreground transition-transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
+              Watch live <span className="ml-3 transition-transform group-hover:translate-x-1">→</span>
+            </a>
+            <a href="https://discord.gg/grinch" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center border-2 border-border bg-card px-6 font-mono text-sm font-bold uppercase text-card-foreground transition-colors hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
+              Join Discord
+            </a>
+          </div>
+        </div>
+
+        <div className="relative animate-float motion-reduce:animate-none">
+          <div className="absolute -inset-2 bg-signal opacity-20 blur-2xl" />
+          <div className="relative overflow-hidden border-4 border-primary bg-card shadow-hard">
+            <img src={grinchHero} alt="Grinch streamer avatar wearing a headset in a neon gaming room" width={1280} height={896} className="aspect-[10/9] h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between border border-primary/50 bg-background/80 px-4 py-3 font-mono text-xs uppercase backdrop-blur">
+              <span>cam_01 // grinch</span>
+              <span className="text-primary">rec ●</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 border-y border-border bg-card/60 py-4">
+        <div className="flex w-[200%] animate-marquee gap-8 font-mono text-sm font-bold uppercase text-primary motion-reduce:animate-none">
+          {Array.from({ length: 12 }).map((_, index) => (
+            <span key={index}>new clips • live streams • discord raids • grinch energy •</span>
+          ))}
+        </div>
+      </section>
+
+      <section id="links" className="relative z-10 mx-auto max-w-7xl px-5 py-16 md:px-8">
+        <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="font-mono text-xs font-bold uppercase text-primary">all access points</p>
+            <h2 className="font-display text-4xl font-extrabold uppercase md:text-6xl">Follow the chaos</h2>
+          </div>
+          <p className="max-w-md text-muted-foreground">Use these cards as the main link hub. Replace the placeholder URLs with Grinch’s exact channels whenever you have them.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {links.map((link, index) => (
+            <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="group relative min-h-56 overflow-hidden border-2 border-border bg-card p-6 transition-all hover:-translate-y-2 hover:border-primary hover:shadow-signal focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
+              <span className="font-mono text-xs uppercase text-muted-foreground">00{index + 1} // {link.tag}</span>
+              <div className="mt-12 flex items-end justify-between gap-4">
+                <div>
+                  <span className="block font-display text-4xl font-extrabold uppercase text-card-foreground transition-colors group-hover:text-primary">{link.label}</span>
+                  <span className="mt-2 block font-mono text-xs uppercase text-muted-foreground">open channel</span>
+                </div>
+                <span className="grid size-12 place-items-center border-2 border-primary bg-primary font-mono font-bold text-primary-foreground transition-transform group-hover:rotate-6 group-hover:scale-110">{link.code}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section id="schedule" className="relative z-10 mx-auto max-w-7xl px-5 pb-20 md:px-8">
+        <div className="overflow-hidden border-2 border-border bg-card">
+          <div className="flex items-center justify-between border-b border-border bg-muted px-5 py-4 font-mono text-xs font-bold uppercase text-muted-foreground">
+            <span>weekly broadcast board</span>
+            <span className="text-primary">status: armed</span>
+          </div>
+          {[
+            ["Mon", "Ranked mayhem", "8 PM"],
+            ["Wed", "Community raids", "7 PM"],
+            ["Fri", "Late-night chaos", "9 PM"],
+          ].map(([day, title, time]) => (
+            <div key={day} className="grid gap-3 border-b border-border px-5 py-5 last:border-b-0 md:grid-cols-[120px_1fr_120px] md:items-center">
+              <span className="font-mono text-sm font-bold uppercase text-primary">{day}</span>
+              <span className="font-display text-2xl font-extrabold uppercase">{title}</span>
+              <span className="font-mono text-sm uppercase text-muted-foreground md:text-right">{time}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;

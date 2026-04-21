@@ -47,6 +47,21 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        terminal: {
+          DEFAULT: "hsl(var(--terminal))",
+          soft: "hsl(var(--terminal-soft))",
+          panel: "hsl(var(--terminal-panel))",
+        },
+        signal: {
+          DEFAULT: "hsl(var(--signal))",
+          glow: "hsl(var(--signal-glow))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        hazard: "hsl(var(--hazard))",
+        static: "hsl(var(--static))",
+        danger: {
+          pop: "hsl(var(--danger-pop))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -62,6 +77,19 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        display: ["Syne", "Space Grotesk", "system-ui", "sans-serif"],
+        sans: ["Space Grotesk", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+      },
+      backgroundImage: {
+        broadcast: "var(--gradient-broadcast)",
+        signal: "var(--gradient-signal)",
+      },
+      boxShadow: {
+        signal: "var(--shadow-signal)",
+        hard: "var(--shadow-hard)",
       },
       keyframes: {
         "accordion-down": {
@@ -80,10 +108,27 @@ export default {
             height: "0",
           },
         },
+        flicker: {
+          "0%, 100%": { opacity: "1" },
+          "48%": { opacity: "0.82" },
+          "50%": { opacity: "0.42" },
+          "52%": { opacity: "0.92" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translate3d(0, 0, 0)" },
+          "50%": { transform: "translate3d(0, -10px, 0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        flicker: "flicker 2.6s steps(1, end) infinite",
+        marquee: "marquee 22s linear infinite",
+        float: "float 5s ease-in-out infinite",
       },
     },
   },
