@@ -4,7 +4,7 @@ const links = [
   { label: "MannyTheGrinchLive", tag: "VOD vault", href: "https://www.youtube.com/@MannyTheGrinchLive", code: "YT", image: grinchHero },
   { label: "Kick", tag: "unfiltered live", href: "https://kick.com/grinch", code: "K", image: grinchHero },
   { label: "Twitch", tag: "main broadcast", href: "https://www.twitch.tv/grinch", code: "TV", image: grinchHero },
-  { label: "The Grinches", tag: "the lair", href: "https://discord.gg/zVJu4jtuYP", code: "DC", image: grinchHero },
+  { label: "The Grinches", tag: "the lair", href: "https://discord.com/invite/zVJu4jtuYP", code: "DC", image: grinchHero },
 ];
 
 const Index = () => {
@@ -44,7 +44,7 @@ const Index = () => {
             <a href="https://www.twitch.tv/grinch" target="_blank" rel="noreferrer" className="group inline-flex min-h-12 items-center justify-center border-2 border-primary bg-primary px-6 font-mono text-sm font-bold uppercase text-primary-foreground transition-transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
               Watch live <span className="ml-3 transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <a href="https://discord.gg/zVJu4jtuYP" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center border-2 border-border bg-card px-6 font-mono text-sm font-bold uppercase text-card-foreground transition-colors hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
+            <a href="https://discord.com/invite/zVJu4jtuYP" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center border-2 border-border bg-card px-6 font-mono text-sm font-bold uppercase text-card-foreground transition-colors hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
               Join The Grinches
             </a>
           </div>
