@@ -3,7 +3,7 @@ import kickProfile from "@/assets/kick-profile.png";
 import youtubeTwitchProfile from "@/assets/youtube-twitch-profile.jpg";
 
 const links = [
-  { label: "MannyTheGrinche", tag: "VOD vault", href: "https://www.youtube.com/@MannyTheGrinchLive", code: "YT", image: youtubeTwitchProfile, compactTitle: true },
+  { label: "MannyTheGrinch", tag: "VOD vault", href: "https://www.youtube.com/@MannyTheGrinchLive", code: "YT", image: youtubeTwitchProfile, compactTitle: true },
   { label: "Kick", tag: "unfiltered live", href: "https://kick.com/grinch", code: "K", image: kickProfile },
   { label: "Twitch", tag: "main broadcast", href: "https://www.twitch.tv/grinch", code: "TV", image: youtubeTwitchProfile },
   { label: "The Grinches", tag: "the lair", href: "https://discord.com/invite/zVJu4jtuYP", code: "DC", image: grinchHero },
