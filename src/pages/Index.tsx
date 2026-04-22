@@ -268,12 +268,10 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="relative z-10 border-y border-border bg-card/60 py-4">
-        <div className="flex w-[200%] animate-marquee gap-8 font-mono text-sm font-bold uppercase text-primary motion-reduce:animate-none">
-          {Array.from({ length: 12 }).map((_, index) => (
-            <span key={index}>new clips • live streams • discord raids • grinch energy •</span>
-          ))}
-        </div>
+      <section className="relative z-10 border-y border-border bg-card/60 py-6">
+        <p className="text-center font-mono text-2xl font-black uppercase tracking-wide text-primary md:text-4xl">
+          If You Aint Grinchin You AInt Winning
+        </p>
       </section>
 
       <section id="links" className="relative z-10 mx-auto max-w-7xl px-5 py-16 md:px-8">
