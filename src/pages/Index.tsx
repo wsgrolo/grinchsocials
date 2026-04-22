@@ -28,9 +28,6 @@ const Index = () => {
 
       <section id="top" className="relative z-10 mx-auto grid min-h-[86vh] max-w-7xl items-center gap-10 px-5 py-12 md:grid-cols-[1.05fr_0.95fr] md:px-8 lg:py-16">
         <div className="space-y-8">
-          <div className="inline-flex border-2 border-primary bg-primary px-3 py-1 font-mono text-xs font-bold uppercase text-primary-foreground shadow-signal">
-            Unauthorized broadcast detected
-          </div>
           <div className="space-y-5">
             <h1 className="font-display text-5xl font-extrabold uppercase leading-[0.82] tracking-normal text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
               Grinch
