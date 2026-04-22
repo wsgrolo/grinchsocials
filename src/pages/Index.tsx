@@ -1,4 +1,5 @@
 import grinchHero from "@/assets/grinch-streamer-hero.jpg";
+import cam01Profile from "@/assets/cam-01-profile.png";
 import kickProfile from "@/assets/kick-profile.png";
 import youtubeTwitchProfile from "@/assets/youtube-twitch-profile.jpg";
 
@@ -52,7 +53,7 @@ const Index = () => {
         <div className="relative animate-float motion-reduce:animate-none">
           <div className="absolute -inset-2 bg-signal opacity-20 blur-2xl" />
           <div className="relative overflow-hidden border-4 border-primary bg-card shadow-hard">
-            <img src={grinchHero} alt="Grinch streamer avatar wearing a headset in a neon gaming room" width={1280} height={896} className="aspect-[10/9] h-full w-full object-cover" />
+            <img src={cam01Profile} alt="Grinch cam 01 profile portrait" width={1280} height={896} className="aspect-[10/9] h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between border border-primary/50 bg-background/80 px-4 py-3 font-mono text-xs uppercase backdrop-blur">
               <span>cam_01 // grinch</span>
