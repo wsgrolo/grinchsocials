@@ -56,7 +56,7 @@ const Index = () => {
             <img src={cam01Profile} alt="Grinch cam 01 profile portrait" width={1280} height={896} className="aspect-[10/9] h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between border border-primary/50 bg-background/80 px-4 py-3 font-mono text-xs uppercase backdrop-blur">
-              <span>// grinch</span>
+              <span>grinch</span>
               <span className="text-primary">rec ●</span>
             </div>
           </div>
