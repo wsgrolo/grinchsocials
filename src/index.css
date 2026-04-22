@@ -141,4 +141,17 @@ All colors MUST be HSL.
     background-image: radial-gradient(hsl(var(--signal) / 0.12) 1px, transparent 1px);
     background-size: 18px 18px;
   }
+
+  .youtube-bg-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh;
+    min-width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    transform: translate(-50%, -50%);
+    border: 0;
+    pointer-events: none;
+  }
 }
