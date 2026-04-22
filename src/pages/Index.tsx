@@ -32,7 +32,7 @@ const Index = () => {
             Unauthorized broadcast detected
           </div>
           <div className="space-y-5">
-            <h1 className="font-display text-6xl font-extrabold uppercase leading-[0.82] tracking-normal text-foreground sm:text-7xl lg:text-9xl">
+            <h1 className="font-display text-5xl font-extrabold uppercase leading-[0.82] tracking-normal text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
               Grinch
               <span className="block bg-signal bg-clip-text text-transparent">goes live</span>
             </h1>
