@@ -1,7 +1,7 @@
 import grinchHero from "@/assets/grinch-streamer-hero.jpg";
 
 const links = [
-  { label: "YouTube", tag: "VOD vault", href: "https://www.youtube.com/@MannyTheGrinchLive", code: "YT", image: grinchHero },
+  { label: "MannyTheGrinchLive", tag: "VOD vault", href: "https://www.youtube.com/@MannyTheGrinchLive", code: "YT", image: grinchHero },
   { label: "Kick", tag: "unfiltered live", href: "https://kick.com/grinch", code: "K", image: grinchHero },
   { label: "Twitch", tag: "main broadcast", href: "https://www.twitch.tv/grinch", code: "TV", image: grinchHero },
   { label: "The Grinches", tag: "the lair", href: "https://discord.gg/zVJu4jtuYP", code: "DC", image: grinchHero },
