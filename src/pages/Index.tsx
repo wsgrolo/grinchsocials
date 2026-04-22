@@ -37,7 +37,7 @@ const Index = () => {
               <span className="block bg-signal bg-clip-text text-transparent">goes live</span>
             </h1>
             <p className="max-w-xl text-lg leading-8 text-muted-foreground md:text-xl">
-              Mischief-heavy streams, chaotic wins, late-night lobbies, and a community built for viewers who never log off quietly.
+              “If you ain't grinchin you ain't winning” - Manny
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
