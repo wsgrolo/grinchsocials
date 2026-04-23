@@ -87,7 +87,8 @@ const extractVideoId = (value: string) => {
 const Index = () => {
   const [copiedDiscord, setCopiedDiscord] = useState(false);
   const [videoId, setVideoId] = useState(DEFAULT_VIDEO_ID);
-  const [isAudioMuted, setIsAudioMuted] = useState(true);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [audioVolume, setAudioVolume] = useState(40);
   const videoFrameRef = useRef<HTMLIFrameElement | null>(null);
 
   const postVideoCommand = useCallback((func: string, args: unknown[] = []) => {
@@ -103,17 +104,29 @@ const Index = () => {
     window.setTimeout(() => setCopiedDiscord(false), 1800);
   };
 
-  const toggleBackgroundAudio = () => {
-    postVideoCommand("playVideo");
+  const toggleBackgroundPlayback = () => {
+    if (isAudioPlaying) {
+      postVideoCommand("pauseVideo");
+      setIsAudioPlaying(false);
+      return;
+    }
 
-    if (isAudioMuted) {
+    postVideoCommand("playVideo");
+    postVideoCommand("unMute");
+    postVideoCommand("setVolume", [audioVolume]);
+    setIsAudioPlaying(true);
+  };
+
+  const updateBackgroundVolume = (value: string) => {
+    const nextVolume = Number(value);
+    setAudioVolume(nextVolume);
+    postVideoCommand("setVolume", [nextVolume]);
+
+    if (nextVolume > 0) {
       postVideoCommand("unMute");
-      postVideoCommand("setVolume", [100]);
     } else {
       postVideoCommand("mute");
     }
-
-    setIsAudioMuted((current) => !current);
   };
 
   useEffect(() => {
@@ -149,9 +162,10 @@ const Index = () => {
 
   const initializeBackgroundLoop = useCallback(() => {
     postVideoCommand("addEventListener", ["onStateChange"]);
-    postVideoCommand("playVideo");
-    postVideoCommand(isAudioMuted ? "mute" : "unMute");
-  }, [isAudioMuted, postVideoCommand]);
+    postVideoCommand(isAudioPlaying ? "playVideo" : "pauseVideo");
+    postVideoCommand("setVolume", [audioVolume]);
+    postVideoCommand(isAudioPlaying && audioVolume > 0 ? "unMute" : "mute");
+  }, [audioVolume, isAudioPlaying, postVideoCommand]);
 
   useEffect(() => {
     const keepVideoLooping = (event: MessageEvent) => {
@@ -162,8 +176,9 @@ const Index = () => {
         if (payload.event !== "onStateChange" || payload.info !== 0) return;
 
         postVideoCommand("seekTo", [0, true]);
-        postVideoCommand("playVideo");
-        postVideoCommand(isAudioMuted ? "mute" : "unMute");
+        postVideoCommand(isAudioPlaying ? "playVideo" : "pauseVideo");
+        postVideoCommand("setVolume", [audioVolume]);
+        postVideoCommand(isAudioPlaying && audioVolume > 0 ? "unMute" : "mute");
       } catch {
         return;
       }
@@ -174,7 +189,7 @@ const Index = () => {
     return () => {
       window.removeEventListener("message", keepVideoLooping);
     };
-  }, [isAudioMuted, postVideoCommand]);
+  }, [audioVolume, isAudioPlaying, postVideoCommand]);
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
@@ -212,7 +227,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="hidden items-center gap-6 font-mono text-xs uppercase text-muted-foreground lg:flex">
+          <div className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase text-muted-foreground lg:gap-6">
             <a className="transition-colors hover:text-primary" href="#links">
               Links
             </a>
@@ -221,12 +236,25 @@ const Index = () => {
             </a>
             <button
               type="button"
-              onClick={toggleBackgroundAudio}
-              aria-pressed={!isAudioMuted}
+              onClick={toggleBackgroundPlayback}
+              aria-pressed={isAudioPlaying}
               className="border border-border bg-card px-3 py-2 font-mono text-xs font-bold uppercase text-card-foreground transition-colors hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
             >
-              {isAudioMuted ? "Unmute audio" : "Mute audio"}
+              {isAudioPlaying ? "Pause audio" : "Play audio"}
             </button>
+            <label className="flex min-w-44 items-center gap-3 border border-border bg-card px-3 py-2 font-mono text-xs font-bold uppercase text-card-foreground">
+              <span>Volume</span>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={audioVolume}
+                onChange={(event) => updateBackgroundVolume(event.target.value)}
+                aria-label="Background audio volume"
+                className="h-2 w-24 accent-primary"
+              />
+              <span className="w-8 text-right text-muted-foreground">{audioVolume}</span>
+            </label>
             <span className="animate-flicker text-secondary">● live soon</span>
           </div>
         </nav>
