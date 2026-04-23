@@ -129,15 +129,29 @@ const Index = () => {
   useEffect(() => {
     let interactionHandled = false;
 
-    const tryEnableAudio = () => {
-      if (interactionHandled) return;
-
+    const postCommand = (func: string, args: unknown[] = []) => {
       const frameWindow = videoFrameRef.current?.contentWindow;
       if (!frameWindow) return;
 
-      const postCommand = (func: string, args: unknown[] = []) => {
-        frameWindow.postMessage(JSON.stringify({ event: "command", func, args }), "https://www.youtube.com");
-      };
+      frameWindow.postMessage(JSON.stringify({ event: "command", func, args }), "https://www.youtube.com");
+    };
+
+    const keepVideoLooping = (event: MessageEvent) => {
+      if (event.origin !== "https://www.youtube.com" || typeof event.data !== "string") return;
+
+      try {
+        const payload = JSON.parse(event.data) as { event?: string; info?: number };
+        if (payload.event !== "onStateChange" || payload.info !== 0) return;
+
+        postCommand("seekTo", [0, true]);
+        postCommand("playVideo");
+      } catch {
+        return;
+      }
+    };
+
+    const tryEnableAudio = () => {
+      if (interactionHandled) return;
 
       postCommand("playVideo");
       postCommand("unMute");
@@ -149,11 +163,18 @@ const Index = () => {
       window.removeEventListener("touchstart", tryEnableAudio);
     };
 
+    window.addEventListener("message", keepVideoLooping);
     window.addEventListener("pointerdown", tryEnableAudio);
     window.addEventListener("keydown", tryEnableAudio);
     window.addEventListener("touchstart", tryEnableAudio);
 
+    const subscribeToPlayerState = window.setTimeout(() => {
+      postCommand("addEventListener", ["onStateChange"]);
+    }, 1000);
+
     return () => {
+      window.clearTimeout(subscribeToPlayerState);
+      window.removeEventListener("message", keepVideoLooping);
       window.removeEventListener("pointerdown", tryEnableAudio);
       window.removeEventListener("keydown", tryEnableAudio);
       window.removeEventListener("touchstart", tryEnableAudio);
@@ -164,7 +185,6 @@ const Index = () => {
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-background">
         <iframe
-          key={videoId}
           ref={videoFrameRef}
           src={embedSrc}
           title="YouTube video background"
