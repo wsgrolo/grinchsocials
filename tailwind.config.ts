@@ -118,6 +118,10 @@ export default {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        "marquee-reverse": {
+          from: { transform: "translateX(-50%)" },
+          to: { transform: "translateX(0)" },
+        },
         float: {
           "0%, 100%": { transform: "translate3d(0, 0, 0)" },
           "50%": { transform: "translate3d(0, -10px, 0)" },
@@ -128,6 +132,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         flicker: "flicker 2.6s steps(1, end) infinite",
         marquee: "marquee 22s linear infinite",
+        "marquee-reverse": "marquee-reverse 18s linear infinite",
         float: "float 5s ease-in-out infinite",
       },
     },

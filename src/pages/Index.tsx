@@ -268,20 +268,16 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="relative z-10 border-y-4 border-primary bg-card py-8 shadow-hard">
-        <div className="mx-auto max-w-6xl px-5 md:px-8">
-          <div className="relative overflow-hidden border-4 border-primary bg-background px-4 py-6 text-center shadow-[0_0_30px_hsl(var(--primary)/0.35)] md:px-8 md:py-8">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-2 bg-primary" />
-            <p className="font-display text-[clamp(2rem,7vw,5.5rem)] font-extrabold uppercase leading-[0.9] tracking-normal text-primary">
-              If You Aint Grinchin
-              <span className="block text-foreground">You Aint Winning</span>
+      <section className="relative z-10 overflow-hidden border-y border-border bg-card/60 py-6">
+        <div className="flex w-max animate-marquee-reverse whitespace-nowrap motion-reduce:animate-none">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <p
+              key={index}
+              className="px-8 text-center font-mono text-2xl font-black uppercase tracking-wide text-primary md:text-4xl"
+            >
+              If You Aint Grinchin You Aint Winning
             </p>
-            <div className="mt-4 flex items-center justify-center gap-2 font-mono text-xs font-bold uppercase text-secondary md:text-sm">
-              <span className="size-2 bg-secondary" />
-              <span>Billboard announcement</span>
-              <span className="size-2 bg-secondary" />
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
