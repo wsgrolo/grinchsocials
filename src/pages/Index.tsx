@@ -1,4 +1,4 @@
-import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
+import { type CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import grinchHero from "@/assets/grinch-streamer-hero.jpg";
 import cam01Profile from "@/assets/cam-01-profile.png";
 import kickProfile from "@/assets/kick-profile.png";
@@ -87,12 +87,33 @@ const extractVideoId = (value: string) => {
 const Index = () => {
   const [copiedDiscord, setCopiedDiscord] = useState(false);
   const [videoId, setVideoId] = useState(DEFAULT_VIDEO_ID);
+  const [isAudioMuted, setIsAudioMuted] = useState(true);
   const videoFrameRef = useRef<HTMLIFrameElement | null>(null);
+
+  const postVideoCommand = useCallback((func: string, args: unknown[] = []) => {
+    const frameWindow = videoFrameRef.current?.contentWindow;
+    if (!frameWindow) return;
+
+    frameWindow.postMessage(JSON.stringify({ event: "command", func, args }), "https://www.youtube.com");
+  }, []);
 
   const copyDiscordInvite = async () => {
     await navigator.clipboard.writeText(DISCORD_INVITE);
     setCopiedDiscord(true);
     window.setTimeout(() => setCopiedDiscord(false), 1800);
+  };
+
+  const toggleBackgroundAudio = () => {
+    postVideoCommand("playVideo");
+
+    if (isAudioMuted) {
+      postVideoCommand("unMute");
+      postVideoCommand("setVolume", [100]);
+    } else {
+      postVideoCommand("mute");
+    }
+
+    setIsAudioMuted((current) => !current);
   };
 
   useEffect(() => {
@@ -127,15 +148,6 @@ const Index = () => {
   );
 
   useEffect(() => {
-    let interactionHandled = false;
-
-    const postCommand = (func: string, args: unknown[] = []) => {
-      const frameWindow = videoFrameRef.current?.contentWindow;
-      if (!frameWindow) return;
-
-      frameWindow.postMessage(JSON.stringify({ event: "command", func, args }), "https://www.youtube.com");
-    };
-
     const keepVideoLooping = (event: MessageEvent) => {
       if (event.origin !== "https://www.youtube.com" || typeof event.data !== "string") return;
 
@@ -143,43 +155,24 @@ const Index = () => {
         const payload = JSON.parse(event.data) as { event?: string; info?: number };
         if (payload.event !== "onStateChange" || payload.info !== 0) return;
 
-        postCommand("seekTo", [0, true]);
-        postCommand("playVideo");
+        postVideoCommand("seekTo", [0, true]);
+        postVideoCommand("playVideo");
       } catch {
         return;
       }
     };
 
-    const tryEnableAudio = () => {
-      if (interactionHandled) return;
-
-      postCommand("playVideo");
-      postCommand("unMute");
-      postCommand("setVolume", [100]);
-
-      interactionHandled = true;
-      window.removeEventListener("pointerdown", tryEnableAudio);
-      window.removeEventListener("keydown", tryEnableAudio);
-      window.removeEventListener("touchstart", tryEnableAudio);
-    };
-
     window.addEventListener("message", keepVideoLooping);
-    window.addEventListener("pointerdown", tryEnableAudio);
-    window.addEventListener("keydown", tryEnableAudio);
-    window.addEventListener("touchstart", tryEnableAudio);
 
     const subscribeToPlayerState = window.setTimeout(() => {
-      postCommand("addEventListener", ["onStateChange"]);
+      postVideoCommand("addEventListener", ["onStateChange"]);
     }, 1000);
 
     return () => {
       window.clearTimeout(subscribeToPlayerState);
       window.removeEventListener("message", keepVideoLooping);
-      window.removeEventListener("pointerdown", tryEnableAudio);
-      window.removeEventListener("keydown", tryEnableAudio);
-      window.removeEventListener("touchstart", tryEnableAudio);
     };
-  }, [videoId]);
+  }, [postVideoCommand, videoId]);
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
@@ -223,6 +216,14 @@ const Index = () => {
             <a className="transition-colors hover:text-primary" href="#schedule">
               Schedule
             </a>
+            <button
+              type="button"
+              onClick={toggleBackgroundAudio}
+              aria-pressed={!isAudioMuted}
+              className="border border-border bg-card px-3 py-2 font-mono text-xs font-bold uppercase text-card-foreground transition-colors hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+            >
+              {isAudioMuted ? "Unmute audio" : "Mute audio"}
+            </button>
             <span className="animate-flicker text-secondary">● live soon</span>
           </div>
         </nav>
