@@ -6,7 +6,8 @@ import youtubeTwitchProfile from "@/assets/youtube-twitch-profile.jpg";
 import discordProfile from "@/assets/discord-profile.png";
 
 const DISCORD_INVITE = "https://discord.com/invite/zVJu4jtuYP";
-const DEFAULT_VIDEO_ID = "eSGT8vDqcP0";
+const BACKGROUND_VIDEO_URL = "https://www.youtube.com/watch?v=eSGT8vDqcP0";
+const DEFAULT_VIDEO_ID = new URL(BACKGROUND_VIDEO_URL).searchParams.get("v") ?? "eSGT8vDqcP0";
 const AUDIO_FADE_STEP_MS = 80;
 const AUDIO_FADE_DURATION_MS = 900;
 
@@ -192,7 +193,7 @@ const Index = () => {
           referrerPolicy="strict-origin-when-cross-origin"
         />
       </div>
-      <div className="pointer-events-none fixed inset-0 z-[1] bg-background/72" />
+      <div className="pointer-events-none fixed inset-0 z-[1] bg-background/45" />
       <div className="pointer-events-none fixed inset-0 z-40 scanlines opacity-40" />
       <div className="pointer-events-none fixed inset-0 z-0 noise-field opacity-30" />
 
