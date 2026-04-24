@@ -52,7 +52,7 @@ const links = [
 
 const Index = () => {
   const [copiedDiscord, setCopiedDiscord] = useState(false);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(true);
   const [audioVolume, setAudioVolume] = useState(40);
   const videoFrameRef = useRef<HTMLIFrameElement | null>(null);
   const activeVolumeRef = useRef(0);
