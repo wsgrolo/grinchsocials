@@ -30,6 +30,7 @@ const links = [
     image: kickProfile,
     accent: "106 97% 50%",
     base: "0 0% 4%",
+    subscribe: "https://kick.com/grinch/subscribe",
   },
   {
     label: "Twitch",
@@ -39,6 +40,7 @@ const links = [
     image: youtubeTwitchProfile,
     accent: "271 100% 64%",
     base: "0 0% 4%",
+    subscribe: "https://www.twitch.tv/subs/grinch",
   },
   {
     label: "The Grinches",
