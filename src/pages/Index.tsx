@@ -138,7 +138,6 @@ const Index = () => {
     if (isAudioPlaying) {
       setIsAudioPlaying(false);
       fadeBackgroundVolume(0, () => {
-        postVideoCommand("pauseVideo");
         postVideoCommand("mute");
       });
       return;
