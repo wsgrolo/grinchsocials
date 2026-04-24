@@ -1,4 +1,5 @@
 import { type CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Pause, Play } from "lucide-react";
 import grinchHero from "@/assets/grinch-streamer-hero.jpg";
 import cam01Profile from "@/assets/cam-01-profile.png";
 import kickProfile from "@/assets/kick-profile.png";
@@ -234,9 +235,11 @@ const Index = () => {
               type="button"
               onClick={toggleBackgroundPlayback}
               aria-pressed={isAudioPlaying}
-              className="border border-border bg-card px-3 py-2 font-mono text-xs font-bold uppercase text-card-foreground transition-colors hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+              aria-label={isAudioPlaying ? "Pause background music" : "Play background music"}
+              title={isAudioPlaying ? "Pause" : "Play"}
+              className="grid size-10 place-items-center border border-border bg-card text-card-foreground transition-colors hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
             >
-              {isAudioPlaying ? "Pause audio" : "Play audio"}
+              {isAudioPlaying ? <Pause className="size-4" fill="currentColor" /> : <Play className="size-4" fill="currentColor" />}
             </button>
             <label className="flex min-w-44 items-center gap-3 border border-border bg-card px-3 py-2 font-mono text-xs font-bold uppercase text-card-foreground">
               <span>Volume</span>
