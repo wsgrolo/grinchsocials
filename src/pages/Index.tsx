@@ -382,7 +382,7 @@ const Index = () => {
                   "--platform-base": link.base,
                 } as CSSProperties
               }
-              className="group relative min-h-72 overflow-hidden border-2 border-[hsl(var(--platform-accent)/0.5)] bg-[linear-gradient(155deg,hsl(var(--platform-base))_0%,hsl(var(--platform-base))_64%,hsl(var(--platform-accent)/0.18)_100%)] p-6 transition-all hover:-translate-y-2 hover:border-[hsl(var(--platform-accent))] hover:shadow-[0_0_34px_hsl(var(--platform-accent)/0.34)] focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+              className="group relative flex min-h-72 flex-col border-2 border-[hsl(var(--platform-accent)/0.5)] bg-[linear-gradient(155deg,hsl(var(--platform-base))_0%,hsl(var(--platform-base))_64%,hsl(var(--platform-accent)/0.18)_100%)] p-6 transition-all hover:-translate-y-2 hover:border-[hsl(var(--platform-accent))] hover:shadow-[0_0_34px_hsl(var(--platform-accent)/0.34)] focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
             >
               <div className="flex items-start justify-between gap-4">
                 <span className="font-mono text-xs uppercase text-muted-foreground">
