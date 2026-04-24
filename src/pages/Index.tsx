@@ -402,7 +402,20 @@ const Index = () => {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="mt-8 flex items-end justify-between gap-4">
+              {link.subscribe && (
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    window.open(link.subscribe, "_blank", "noopener,noreferrer");
+                  }}
+                  className="relative z-10 mt-8 inline-flex w-full items-center justify-center border-2 border-[hsl(var(--platform-accent))] bg-[hsl(var(--platform-accent))] px-4 py-2 font-mono text-xs font-bold uppercase text-black transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+                >
+                  Subscribe
+                </button>
+              )}
+              <div className="mt-5 flex items-end justify-between gap-4">
                 <div className="min-w-0">
                   <span
                     className="block max-w-full truncate whitespace-nowrap font-display text-[clamp(1.1rem,2.2vw,1.45rem)] font-extrabold uppercase leading-[1] text-card-foreground transition-colors group-hover:text-[hsl(var(--platform-accent))]"
@@ -413,19 +426,6 @@ const Index = () => {
                 </div>
                 <span className="font-mono text-2xl text-[hsl(var(--platform-accent))] transition-transform group-hover:translate-x-1">→</span>
               </div>
-              {link.subscribe && (
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    window.open(link.subscribe, "_blank", "noopener,noreferrer");
-                  }}
-                  className="relative z-10 mt-5 inline-flex w-full items-center justify-center border-2 border-[hsl(var(--platform-accent))] bg-[hsl(var(--platform-accent))] px-4 py-2 font-mono text-xs font-bold uppercase text-black transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-                >
-                  Subscribe
-                </button>
-              )}
             </a>
           ))}
         </div>
