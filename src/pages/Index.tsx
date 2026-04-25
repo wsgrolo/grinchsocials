@@ -291,7 +291,7 @@ const Index = () => {
 
       <section
         id="top"
-        className="relative z-10 mx-auto grid min-h-[86vh] max-w-7xl items-center gap-10 px-5 py-12 md:grid-cols-[1.05fr_0.95fr] md:px-8 lg:py-16"
+        className="relative z-10 mx-auto grid min-h-[86vh] max-w-7xl items-center gap-10 px-5 py-14 sm:px-6 sm:py-16 md:grid-cols-[1.05fr_0.95fr] md:gap-14 md:px-10 md:py-20 lg:gap-20 lg:px-12 lg:py-24"
       >
         <div className="space-y-8">
           <div className="space-y-5">
