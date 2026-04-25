@@ -291,7 +291,7 @@ const Index = () => {
 
       <section
         id="top"
-        className="relative z-10 mx-auto grid min-h-[86vh] max-w-7xl items-center gap-10 px-5 py-12 md:grid-cols-[1.05fr_0.95fr] md:px-8 lg:py-16"
+        className="relative z-10 mx-auto grid min-h-[86vh] max-w-7xl items-center gap-10 px-5 py-14 sm:px-6 sm:py-16 md:grid-cols-[1.05fr_0.95fr] md:gap-14 md:px-10 md:py-20 lg:gap-20 lg:px-12 lg:py-24"
       >
         <div className="space-y-8">
           <div className="space-y-5">
@@ -349,7 +349,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="relative z-10 overflow-hidden border-y border-border bg-card/60 py-6">
+      <section className="relative z-10 overflow-hidden border-y border-border bg-card/60 py-5 md:py-7">
         <div className="flex w-max animate-marquee-reverse whitespace-nowrap motion-reduce:animate-none">
           {Array.from({ length: 6 }).map((_, index) => (
             <p
@@ -362,14 +362,14 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="links" className="relative z-10 mx-auto max-w-7xl px-5 py-16 md:px-8">
-        <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <section id="links" className="relative z-10 mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-20 lg:px-12 lg:py-24">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:mb-14 md:flex-row md:items-end">
           <div>
             <p className="font-mono text-xs font-bold uppercase text-primary">all access points</p>
-            <h2 className="font-display text-4xl font-extrabold uppercase md:text-6xl">Follow the Grinch</h2>
+            <h2 className="mt-2 font-display text-4xl font-extrabold uppercase md:text-6xl">Follow the Grinch</h2>
           </div>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-7">
           {links.map((link, index) => (
             <a
               key={link.label}
@@ -382,7 +382,7 @@ const Index = () => {
                   "--platform-base": link.base,
                 } as CSSProperties
               }
-              className="group relative flex min-h-72 flex-col border-2 border-[hsl(var(--platform-accent)/0.5)] bg-[linear-gradient(155deg,hsl(var(--platform-base))_0%,hsl(var(--platform-base))_64%,hsl(var(--platform-accent)/0.18)_100%)] p-6 transition-all hover:-translate-y-2 hover:border-[hsl(var(--platform-accent))] hover:shadow-[0_0_34px_hsl(var(--platform-accent)/0.34)] focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+              className="group relative flex min-h-72 flex-col border-2 border-[hsl(var(--platform-accent)/0.5)] bg-[linear-gradient(155deg,hsl(var(--platform-base))_0%,hsl(var(--platform-base))_64%,hsl(var(--platform-accent)/0.18)_100%)] p-5 sm:p-6 md:p-7 transition-all hover:-translate-y-2 hover:border-[hsl(var(--platform-accent))] hover:shadow-[0_0_34px_hsl(var(--platform-accent)/0.34)] focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
             >
               <div className="flex items-start justify-between gap-4">
                 <span className="font-mono text-xs uppercase text-muted-foreground">
@@ -392,7 +392,7 @@ const Index = () => {
                   {link.code}
                 </span>
               </div>
-              <div className="mx-auto mt-8 size-28 overflow-hidden rounded-full border-4 border-[hsl(var(--platform-accent))] bg-muted shadow-[0_0_24px_hsl(var(--platform-accent)/0.3)] transition-transform duration-300 group-hover:scale-105">
+              <div className="mx-auto mt-6 size-24 overflow-hidden rounded-full border-4 border-[hsl(var(--platform-accent))] bg-muted shadow-[0_0_24px_hsl(var(--platform-accent)/0.3)] transition-transform duration-300 group-hover:scale-105 sm:mt-8 sm:size-28">
                 <img
                   src={link.image}
                   alt={`${link.label} profile picture for Grinch`}
@@ -410,12 +410,12 @@ const Index = () => {
                     event.stopPropagation();
                     window.open(link.subscribe, "_blank", "noopener,noreferrer");
                   }}
-                  className="relative z-10 mt-8 inline-flex w-full items-center justify-center border-2 border-[hsl(var(--platform-accent))] bg-[hsl(var(--platform-accent))] px-4 py-2 font-mono text-xs font-bold uppercase text-black transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+                  className="relative z-10 mt-6 inline-flex w-full items-center justify-center border-2 border-[hsl(var(--platform-accent))] bg-[hsl(var(--platform-accent))] px-4 py-2.5 font-mono text-xs font-bold uppercase text-black transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
                 >
                   Subscribe
                 </button>
               )}
-              <div className="mt-5 flex items-end justify-between gap-4">
+              <div className="mt-auto flex items-end justify-between gap-4 pt-6">
                 <div className="min-w-0">
                   <span
                     className="block max-w-full truncate whitespace-nowrap font-display text-[clamp(1.1rem,2.2vw,1.45rem)] font-extrabold uppercase leading-[1] text-card-foreground transition-colors group-hover:text-[hsl(var(--platform-accent))]"
