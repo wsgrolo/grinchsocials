@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/MannyTheGrinch/" : "/",
+  base: mode === "production" ? "/grinch-stream-hub/" : "/",
   server: {
     host: "::",
     port: 8080,
