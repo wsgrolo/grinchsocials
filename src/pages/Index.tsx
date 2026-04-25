@@ -392,7 +392,7 @@ const Index = () => {
                   {link.code}
                 </span>
               </div>
-              <div className="mx-auto mt-8 size-28 overflow-hidden rounded-full border-4 border-[hsl(var(--platform-accent))] bg-muted shadow-[0_0_24px_hsl(var(--platform-accent)/0.3)] transition-transform duration-300 group-hover:scale-105">
+              <div className="mx-auto mt-6 size-24 overflow-hidden rounded-full border-4 border-[hsl(var(--platform-accent))] bg-muted shadow-[0_0_24px_hsl(var(--platform-accent)/0.3)] transition-transform duration-300 group-hover:scale-105 sm:mt-8 sm:size-28">
                 <img
                   src={link.image}
                   alt={`${link.label} profile picture for Grinch`}
