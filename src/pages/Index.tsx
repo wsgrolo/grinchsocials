@@ -51,6 +51,15 @@ const links = [
     accent: "235 86% 64%",
     base: "0 0% 4%",
   },
+  {
+    label: "4kmanny",
+    tag: "off-stream drops",
+    href: "https://www.instagram.com/4kmanny/",
+    code: "IG",
+    image: cam01Profile,
+    accent: "330 100% 60%",
+    base: "0 0% 4%",
+  },
 ];
 
 const AUDIO_STATE_STORAGE_KEY = "grinch:audio-state";
