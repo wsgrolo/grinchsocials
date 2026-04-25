@@ -359,7 +359,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="relative z-10 overflow-hidden border-y border-border bg-card/60 py-5 md:py-7">
+      <section className="relative z-10 overflow-hidden border-y border-border/60 bg-card/20 backdrop-blur-sm py-5 md:py-7">
         <div className="flex w-max animate-marquee-reverse whitespace-nowrap motion-reduce:animate-none">
           {Array.from({ length: 6 }).map((_, index) => (
             <p
