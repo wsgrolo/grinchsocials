@@ -5,7 +5,6 @@ import cam01Profile from "@/assets/cam-01-profile.png";
 import kickProfile from "@/assets/kick-profile.png";
 import youtubeTwitchProfile from "@/assets/youtube-twitch-profile.jpg";
 import discordProfile from "@/assets/discord-profile.png";
-import instagramProfile from "@/assets/instagram-profile.png";
 
 const DISCORD_INVITE = "https://discord.com/invite/zVJu4jtuYP";
 const BACKGROUND_VIDEO_URL = "https://www.youtube.com/watch?v=eSGT8vDqcP0";
@@ -57,7 +56,7 @@ const links = [
     tag: "off-stream drops",
     href: "https://www.instagram.com/4kmanny/",
     code: "IG",
-    image: instagramProfile,
+    image: cam01Profile,
     accent: "330 100% 60%",
     base: "0 0% 4%",
   },
@@ -359,7 +358,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="relative z-10 overflow-hidden border-y border-border/40 bg-transparent py-5 md:py-7">
+      <section className="relative z-10 overflow-hidden border-y border-border bg-card/60 py-5 md:py-7">
         <div className="flex w-max animate-marquee-reverse whitespace-nowrap motion-reduce:animate-none">
           {Array.from({ length: 6 }).map((_, index) => (
             <p
