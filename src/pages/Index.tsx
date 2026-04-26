@@ -65,16 +65,17 @@ const links = [
 const AUDIO_STATE_STORAGE_KEY = "grinch:audio-state";
 
 const readStoredAudioState = (): { isPlaying: boolean; volume: number } => {
-  if (typeof window === "undefined") return { isPlaying: true, volume: 40 };
+  // Default muted-on-load so YouTube autoplay always succeeds; we unmute after first user gesture.
+  if (typeof window === "undefined") return { isPlaying: false, volume: 40 };
   try {
     const raw = window.localStorage.getItem(AUDIO_STATE_STORAGE_KEY);
-    if (!raw) return { isPlaying: true, volume: 40 };
+    if (!raw) return { isPlaying: false, volume: 40 };
     const parsed = JSON.parse(raw) as { isPlaying?: boolean; volume?: number };
     const volume = typeof parsed.volume === "number" ? Math.min(100, Math.max(0, parsed.volume)) : 40;
-    const isPlaying = typeof parsed.isPlaying === "boolean" ? parsed.isPlaying : true;
+    const isPlaying = typeof parsed.isPlaying === "boolean" ? parsed.isPlaying : false;
     return { isPlaying, volume };
   } catch {
-    return { isPlaying: true, volume: 40 };
+    return { isPlaying: false, volume: 40 };
   }
 };
 
