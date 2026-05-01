@@ -7,8 +7,7 @@ import youtubeTwitchProfile from "@/assets/youtube-twitch-profile.jpg";
 import discordProfile from "@/assets/discord-profile.png";
 
 const DISCORD_INVITE = "https://discord.com/invite/zVJu4jtuYP";
-const BACKGROUND_VIDEO_URL = "https://www.youtube.com/watch?v=eSGT8vDqcP0";
-const DEFAULT_VIDEO_ID = new URL(BACKGROUND_VIDEO_URL).searchParams.get("v") ?? "eSGT8vDqcP0";
+const DEFAULT_VIDEO_ID = "5yduAcML59c";
 const AUDIO_FADE_STEP_MS = 80;
 const AUDIO_FADE_DURATION_MS = 900;
 
