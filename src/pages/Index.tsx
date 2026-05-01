@@ -226,6 +226,29 @@ const Index = () => {
     };
   }, [audioVolume, isAudioPlaying, postVideoCommand]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!isAudioPlaying) return;
+
+    const unlockAudio = () => {
+      clearAudioFade();
+      activeVolumeRef.current = 0;
+      postVideoCommand("playVideo");
+      postVideoCommand("unMute");
+      postVideoCommand("setVolume", [0]);
+      fadeBackgroundVolume(audioVolume);
+      cleanup();
+    };
+
+    const events: Array<keyof WindowEventMap> = ["pointerdown", "keydown", "touchstart", "scroll"];
+    const cleanup = () => {
+      events.forEach((evt) => window.removeEventListener(evt, unlockAudio));
+    };
+    events.forEach((evt) => window.addEventListener(evt, unlockAudio, { once: true, passive: true }));
+
+    return cleanup;
+  }, [audioVolume, clearAudioFade, fadeBackgroundVolume, isAudioPlaying, postVideoCommand]);
+
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-background">
