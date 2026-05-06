@@ -1,6 +1,5 @@
 import { type CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
-import grinchHero from "@/assets/grinch-streamer-hero.jpg";
 import cam01Profile from "@/assets/cam-01-profile.png";
 import kickProfile from "@/assets/kick-profile.png";
 import youtubeTwitchProfile from "@/assets/youtube-twitch-profile.jpg";
@@ -14,7 +13,7 @@ const AUDIO_FADE_DURATION_MS = 900;
 const links = [
   {
     label: "MannyTheGrinch",
-    tag: "VOD vault",
+    tag: "Youtube",
     href: "https://www.youtube.com/@MannyTheGrinchLive",
     code: "YT",
     image: youtubeTwitchProfile,
@@ -22,8 +21,8 @@ const links = [
     base: "0 0% 4%",
   },
   {
-    label: "Kick",
-    tag: "unfiltered live",
+    label: "Grinch",
+    tag: "Kick",
     href: "https://kick.com/grinch",
     code: "K",
     image: kickProfile,
@@ -32,8 +31,8 @@ const links = [
     subscribe: "https://kick.com/grinch/subscribe",
   },
   {
-    label: "Twitch",
-    tag: "main broadcast",
+    label: "Grinch",
+    tag: "Twitch",
     href: "https://www.twitch.tv/grinch",
     code: "TV",
     image: youtubeTwitchProfile,
@@ -43,7 +42,7 @@ const links = [
   },
   {
     label: "The Grinches",
-    tag: "the lair",
+    tag: "Discord",
     href: DISCORD_INVITE,
     code: "DC",
     image: discordProfile,
@@ -52,7 +51,7 @@ const links = [
   },
   {
     label: "4kmanny",
-    tag: "off-stream drops",
+    tag: "Instagram",
     href: "https://www.instagram.com/4kmanny/",
     code: "IG",
     image: cam01Profile,
